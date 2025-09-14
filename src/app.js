@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import productRoutes from "./routes/products.js";
 
 // Import routes
 // import productRoutes from "./routes/products.js";
@@ -23,7 +24,7 @@ app.get("/health", (req, res) => {
 });
 
 // Routes
-// app.use("/api/products", productRoutes);
+app.use("/api/products", productRoutes);
 // app.use("/api/upload-model", uploadRoutes);
 // app.use("/api/auth", authRoutes);
 

@@ -1,13 +1,15 @@
 import express from "express"
 import { getAllProducts, getProductById } from "../controllers/productController.js"
 
-const router = express.Router();
+const productRoutes = express.Router();
 
 // Public routes
-router.get("/", getAllProducts);
-router.get("/:id", getProductById);
+productRoutes.get("/", getAllProducts);
+productRoutes.get("/:id", getProductById);
 
 // For later implementation of admin routes
-// router.post('/', createProduct);
-// router.put('/:id', updateProduct);
-// router.delete('/:id', deleteProduct);
+// productRoutes.post('/', createProduct);
+// productRoutes.put('/:id', updateProduct);
+// productRoutes.delete('/:id', deleteProduct);
+
+export default productRoutes;
