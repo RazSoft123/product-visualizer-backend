@@ -1,5 +1,6 @@
 import express from "express"
-import { getAllProducts, getProductById } from "../controllers/productController.js"
+import { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct } from "../controllers/productController.js"
+import { imageUpload } from "../middleware/imageUpload.js";
 
 const productRoutes = express.Router();
 
@@ -8,8 +9,9 @@ productRoutes.get("/", getAllProducts);
 productRoutes.get("/:id", getProductById);
 
 // For later implementation of admin routes
-// productRoutes.post('/', createProduct);
-// productRoutes.put('/:id', updateProduct);
-// productRoutes.delete('/:id', deleteProduct);
+productRoutes.post('/', imageUpload.single("image"), createProduct);
+productRoutes.put('/:id', updateProduct);
+productRoutes.delete('/:id', deleteProduct);
+
 
 export default productRoutes;
