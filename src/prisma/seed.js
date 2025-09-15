@@ -5,34 +5,39 @@ const prisma = new PrismaClient();
 async function main() {
     const sampleData = [
         {
-            name: "product 1",
-            image: "product1/image/im1.jpg",
-            category: "table",
-            price: 10.2
-        },
-        {
-            name: "product 2",
-            image: "product2/image/im1.jpg",
+            name: "Chair 1",
+            image: "chair_1.jpg",
             category: "chair",
-            price: 8.2
+            price: 1000,
+            desc: "Very good and comfy chair"
         },
         {
-            name: "product 3",
-            image: "product1/image/im1.jpg",
+            name: "Chair 2",
+            image: "chair_2.jpg",
             category: "chair",
-            price: 9
+            price: 1000,
+            desc: "Very good and comfy chair"
         },
         {
-            name: "product 4",
-            image: "product1/image/im1.jpg",
+            name: "Sofa",
+            image: "sofa.png",
+            category: "sofa",
+            price: 1000,
+            desc: "Royal size sofa with best fit"
+        },
+        {
+            name: "Table 1",
+            image: "table_1.png",
             category: "table",
-            price: 9.2
+            price: 1000,
+            desc: "Very good table for study and do work"
         },
         {
-            name: "product 5",
-            image: "product1/image/im1.jpg",
-            category: "cahir",
-            price: 100.2
+            name: "Table 2",
+            image: "table_2.png",
+            category: "table",
+            price: 1000,
+            desc: "Very good table for study"
         }
     ]
     console.log("Seeding database...");
