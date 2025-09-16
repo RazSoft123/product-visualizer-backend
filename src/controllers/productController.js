@@ -1,18 +1,22 @@
 import { PrismaClient } from "@prisma/client";
-import multer from "multer";
 
 const prisma = new PrismaClient();
-
-// Configring multer for file uploads
 
 // Get all products "GET /api/products"
 export const getAllProducts = async (req, res) => {
     try {
         // res.status(200).json({ message: "List of all products" });
+        console.log("Request body is : ", req);
         const products = await prisma.product.findMany({ orderBy: { created_at: 'desc' } });
-        res.status(200).json(products);
+        const data = products.map((product) => { return { id: product.id, name: product.name, image: `${req.protocol}://${req.get("host")}/storage/product/img/` + product.image } })
+        res.status(200).json({
+            status: "success",
+            count: data.length,
+            data: data,
+
+        });
     } catch (error) {
-        res.status(500).json({ error: "Failed to retrieve products", details: error.message });
+        res.status(500).json({ status: "fail", error: "Failed to retrieve products" });
     }
 };
 
@@ -27,11 +31,24 @@ export const getProductById = async (req, res) => {
             where: { id: id }
         });
         if (!product) {
-            return res.status(404).json({ error: "Product not found" });
+            return res.status(404).json({ status: "fail", error: "Failed to retrieve product" });
         }
-        res.status(200).json(product);
+
+        const data = {
+            id: product.id,
+            name: product.name,
+            image: `${req.protocol}://${req.get("host")}/storage/product/img/` + product.image,
+            model: `${req.protocol}://${req.get("host")}/storage/product/models/` + product.model,
+            category: product.category,
+            description: product.desc
+        }
+        res.status(200).json({
+            status: "success",
+            count: 1,
+            data: data
+        });
     } catch (error) {
-        res.status(500).json({ error: "Failed to retrieve product", details: error.message });
+        res.status(500).json({ status: "fail", error: "Failed to retrieve product" });
     }
 };
 

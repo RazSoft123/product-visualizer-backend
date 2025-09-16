@@ -9,6 +9,7 @@ async function main() {
             image: "chair_1.jpg",
             category: "chair",
             price: 1000,
+            model: "chair_1.glb",
             desc: "Very good and comfy chair"
         },
         {
@@ -16,6 +17,7 @@ async function main() {
             image: "chair_2.jpg",
             category: "chair",
             price: 1000,
+            model: "chair_2.glb",
             desc: "Very good and comfy chair"
         },
         {
@@ -23,6 +25,7 @@ async function main() {
             image: "sofa.png",
             category: "sofa",
             price: 1000,
+            model: "sofa.glb",
             desc: "Royal size sofa with best fit"
         },
         {
@@ -30,6 +33,7 @@ async function main() {
             image: "table_1.png",
             category: "table",
             price: 1000,
+            model: "table_1.glb",
             desc: "Very good table for study and do work"
         },
         {
@@ -37,6 +41,7 @@ async function main() {
             image: "table_2.png",
             category: "table",
             price: 1000,
+            model: "table_2.glb",
             desc: "Very good table for study"
         }
     ]

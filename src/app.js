@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import path from "path"
 import productRoutes from "./routes/products.js";
+
 
 // Import routes
 // import productRoutes from "./routes/products.js";
@@ -14,6 +16,10 @@ const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL || "*" }));
 app.use(express.json());
 app.use(morgan("dev"));
+
+// Exposing public storage route 
+app.use("/storage/product", express.static(path.join(process.cwd(), "public/product")));
+
 
 // Health check
 app.get("/health", (req, res) => {
