@@ -39,6 +39,7 @@ export const getProductById = async (req, res) => {
             name: product.name,
             image: `${req.protocol}://${req.get("host")}/storage/product/img/` + product.image,
             model: `${req.protocol}://${req.get("host")}/storage/product/models/` + product.model,
+            price: product.price,
             category: product.category,
             description: product.desc
         }
